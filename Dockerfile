@@ -53,6 +53,6 @@ ENV NODE_ENV=production \
   PAPERCLIP_DEPLOYMENT_EXPOSURE=private
 
 EXPOSE 3100
-
+# Railway volumes configured via dashboard, not Dockerfile
 USER node
 CMD ["node", "--import", "./server/node_modules/tsx/dist/loader.mjs", "server/dist/index.js"]
