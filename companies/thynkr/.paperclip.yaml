@@ -1,0 +1,126 @@
+schema: paperclip/v1
+
+agents:
+  ceo:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 2000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+
+  cto:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 3000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: optional
+
+  engineer:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 5000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: required
+
+  qa:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 2000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+        GH_TOKEN:
+          kind: secret
+          requirement: optional
+
+  growth-lead:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 3000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+
+  content-writer:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 3000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+
+  pilot-lead:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+    budgetMonthlyCents: 2000
+    inputs:
+      env:
+        ANTHROPIC_API_KEY:
+          kind: secret
+          requirement: required
+
+routines:
+  weekly-strategy-review:
+    triggers:
+      - kind: schedule
+        cronExpression: "0 9 * * 1"
+        timezone: Australia/Brisbane
+
+  daily-growth-pulse:
+    triggers:
+      - kind: schedule
+        cronExpression: "0 8 * * *"
+        timezone: Australia/Brisbane
+
+  blog-pipeline:
+    triggers:
+      - kind: schedule
+        cronExpression: "0 10 * * 1,4"
+        timezone: Australia/Brisbane
+
+  community-research:
+    triggers:
+      - kind: schedule
+        cronExpression: "0 7 * * *"
+        timezone: Australia/Brisbane
+
+  content-calendar:
+    triggers:
+      - kind: schedule
+        cronExpression: "0 9 * * 1"
+        timezone: Australia/Brisbane
